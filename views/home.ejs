@@ -1,0 +1,98 @@
+<% include partials/header %>
+    <h3>
+        <%= user%>
+    </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <% categories.forEach(function(category){%>
+                    <% if(category.image){ %>
+                        <div class=" col-md-4 col-sm-6 img-box">
+                            <div class="img-responsive img-rounded thumbnail">
+                                <img src="<%= category.image %>">
+                                <p class="jobs_tiles">
+                                    <a href="/category/<%=category._id%>">
+                                        <%= category.title %>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <%}%>
+                            <%});%>
+                                <div class=" col-md-8 col-sm-12 longbox img-box">
+                                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                        <!-- Indicators -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        </ol>
+
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <img src="images/Top 10.jpg" alt="Chania">
+                                                <div class="carousel-caption">
+                                                    <h3>Los Angeles</h3>
+                                                    <p>LA is always so much fun!</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <img src="images/Top 10.jpg" alt="Chicago">
+                                                <div class="carousel-caption">
+                                                    <h3>Chicago</h3>
+                                                    <p>Thank you, Chicago!</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <img src="images/Top 10.jpg" alt="New York">
+                                                <div class="carousel-caption">
+                                                    <h3>New York</h3>
+                                                    <p>We love the Big Apple!</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Carousel controls -->
+                                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class=" col-sm-12">
+                                    <div class="thumbnail   blogbox">
+                                        <h3>How To Crack SSC Cgl Exam.</h3>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+                                            as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for
+                                            'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). t is a long established
+                                            fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                                            using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+                                            will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                        </p>
+                                        <a class="btn btn-warning btn-xs" href="#">Know more</a>
+                                    </div>
+                                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h3 class="text-center current_opening">Current Openings</h3>
+                <div class="list-group">
+                    <% categories.forEach(function(category){%>
+                        <%if(category.title === 'Current Opening'){%>
+                            <% category.jobs.forEach(function(job){%>
+                                <a href="/category/<%=category._id %>/job/<%=job._id %>" class="list-group-item text-center ">
+                                    <%=job.title%>
+                                </a>
+                                <%})%>
+                                    <%}%>
+                                        <%})%>
+                                            <a href="/category/5a4c8c6cbf4f742160c58a7f" class="list-group-item text-center list-group-item-info">All Openings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include partials/footer %>

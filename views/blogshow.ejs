@@ -1,0 +1,43 @@
+<% include partials/subheader %>
+<div class="jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div id="blogshowpage_jumbo" class="jumbotron">
+                <h2 class="text-uppercase"><%=foundBlog.title%> Blog</h2>
+                <span class="text-right"><%= foundBlog.created.toDateString()%></span>
+                <hr>
+                <blockquote>
+                <p ><%=foundBlog.subheader%></p>
+                </blockquote>
+            </div>
+            <div class="col-sm-8">
+                <img class="blogshowpage_image rounded" src="<%=foundBlog.image%>" alt="Responsive image">
+                <p class="blogshowpage_text">
+                    <%-foundBlog.body%>
+                </p>
+                <a class="btn btn-warning btn-sm" href="/blogs/<%=foundBlog.title%>/edit">Edit</a>
+                <form id="delete_form" action="/blogs/<%=foundBlog._id%>?_method=delete" method="post">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </div>
+            <%blogs.slice(0,6).forEach(function(blog){%>
+            <div class="col-sm-4 ">
+                <div class="media blogshowpage_media">
+                    <div class="media-left">
+                        <a href="">
+                            <img class="media-object" src="<%=blog.image%>" width="100px" height="100px" alt="media Image">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%=blog.title.toUpperCase()%></h4>
+                        <div class="text-justify">
+                            <%=blog.body.substring(0,150)%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% });%>
+        </div>
+    </div>
+</div>
+<% include partials/subfooter %>

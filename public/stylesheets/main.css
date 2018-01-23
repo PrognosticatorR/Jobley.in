@@ -1,0 +1,614 @@
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+    text-align: center;
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover {
+    background: white;
+    color: black;
+}
+
+.navbar-inverse .active {
+    background: white;
+    color: black;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+    font-family: 'Damion', cursive;
+    font-size: 25px;
+    margin-right: 25px;
+    margin-left: 30px;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: rgb(255, 66, 66);
+}
+.navbar-inverse {
+    background: black;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    border-bottom: 3px solid rgb(255, 66, 66);
+    background: white;
+    color: black
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    background: white;
+    color: black;
+    border-bottom: 3px solid rgb(255, 66, 66);
+}
+
+h1 {
+    padding-top: 50px;
+    text-align: center;
+}
+
+hr.top_line {
+    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #fff;
+    width: 78%;
+    margin-top: 80px;
+}
+
+.container {
+    width: 85%;
+}
+
+.img-box {
+    position: relative;
+    margin-bottom: -10px;
+}
+
+.img-box .jobs_tiles {
+    position: relative;
+    background: #2d2d2d;
+    width: 100%;
+    text-align: center;
+    color: white;
+    bottom: 20px;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+
+/* ******************************Subnavigation Footer ***************************** */
+
+.subnavigation-container {
+    background: #080808;
+}
+
+.subnavigation .nav-link {
+    color: white;
+    font-weight: bold;
+}
+
+.subnavigation-container {
+    text-align: center;
+}
+
+.subnavigation-container .navbar {
+    display: inline-block;
+    margin-bottom: -6px;
+    /* Inline-block margin offffset HACK -Gilron */
+}
+
+.col-subnav a {
+    padding: 1rem 1rem;
+    color: white;
+}
+
+.col-subnav .active {
+    border-bottom: 3px solid rgb(255, 66, 66);
+    background: white;
+    color: black;
+}
+
+.footer {
+    background: #15202a none repeat scroll 0 0 !important;
+    background: #2d2d2d;
+    color: #fff;
+    padding: 30px 0 40px;
+    position: relative;
+}
+
+.btn-group-lg>.btn,
+.btn-lg {
+    width: 100%;
+}
+
+.footer .row a {
+    color: white;
+    text-decoration: none;
+}
+.footer .row a:hover{
+    font-size: 18px;
+}
+ul {
+    list-style: none;
+}
+
+.social li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    color: #2d2d2d;
+    border-radius: 10%;
+}
+
+.social li:hover{
+    background-color:rgb(255, 66, 66) ;
+}
+.foot_logo {
+    font-family: 'Damion', cursive;
+    font-size: 35px;
+    padding-bottom: 20px;
+}
+
+.foot_logo :hover {
+    color: rgb(255, 66, 66);
+}
+a{
+    text-decoration: none;
+}
+.newletter_box h3 {
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+    color: #fff;
+}
+
+.nav>li>a:hover {
+    background: white;
+    border-bottom:3px solid rgb(255, 66, 66);
+    color: black;
+}
+
+
+/* *********************************footer******************************* */
+.foot_address {
+    line-height: 1.5em;
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+@media(min-width:768px) {
+    .col-sm-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.footer .col-xs-12 {
+    margin-bottom: 15px;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+/* *********************Images Grid************************ */
+
+.row .thumbnail img {
+    width: 100%;
+    height: 150px;
+    border: none;
+}
+
+.thumbnail {
+    padding: 0;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.blogbox {
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.blogbox a {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+.blogbox .btn-warning {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+.blogbox h3 {
+    position: absolute;
+    top: -15px;
+    font-size: 1.6em;
+}
+
+.blogbox p {
+    position: absolute;
+    top: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height:1.41em ;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    height: 190px;
+}
+
+@media(min-width: 992px) {
+    .col-md-4 {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+@media(min-width: 992px) {
+    .col-md-8 {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+
+/* *****************************Login form********************************** */
+
+.outer-wrapper {
+    width: 400px;
+    background: rgba(200, 200, 200, 0.74);
+    height: auto;
+    margin-top: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+@media (max-width:500px) {
+    .outer-wrapper {
+        width: 100%;
+    }
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.outer-wrapper .container {
+    width: 92%;
+}
+
+.inner-wrapper .logo_container {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px gray;
+    font-weight: bold;
+}
+
+.form-group span {
+    float: right;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+.form-group a {
+    color: rgb(255, 66, 66);
+}
+
+
+/* *******************signup styling statrts here**************************** */
+
+.signup {
+    margin-left: 47%;
+}
+
+.form-group #signup-question {
+    text-align: center;
+}
+
+.fa-facebook-f:before,
+.fa-facebook:before {
+    font-size: large;
+    margin-right: 5px;
+}
+
+.logo h1 {
+    text-align: center;
+    margin: auto;
+    margin-top: 3%;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.logo p {
+    text-align: center;
+    margin: auto;
+    font-family: lato;
+    font-size: 1.2em;
+}
+
+.wrapper .outer-wrapper {
+    margin-top: 2%;
+}
+
+#signup_fb_btn {
+    background: #4267b2;
+    border: 1px solid #4267b2;
+}
+
+
+/* ************************* Privacy Polcy & Terms of Use ********************************** */
+
+.text_container {
+    width: 75%;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.policy_head {
+    font-family: lato;
+    font-weight: 800;
+    font-size: 2.2em;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    background: #fc4a1a;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7b733, #fc4a1a);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-bottom: 40px;
+    width: 100%;
+    text-shadow: 1px 1px 2px gray;
+}
+
+.policy_subhead {
+    font-family: lato;
+    font-weight: 700;
+    font-size: 1.15em;
+    text-decoration: underline;
+}
+
+p a {
+    color: rgb(255, 66, 66)
+}
+
+
+/* *****************************   RESULT pAGE  ********************** */
+
+.job_heading {
+    background: #2d2d2d;
+}
+
+.job_heading h2 {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 5px 0 5px 0;
+}
+
+.job-details .col-sm-6 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.job_details {
+    text-align: center;
+}
+
+.state_names {
+    text-align: center;
+}
+
+.state-col-deatlis {
+    margin: 5px;
+    font-size: 16px;
+}
+
+.job_name li {
+    margin: 5px;
+    font-size: 16px;
+}
+
+
+/************************Blog Styling ********************/
+
+.blog_form {
+    width: 500px;
+    margin-bottom: 6em;
+    margin-top: 3em;
+}
+
+@media (max-width:550px) {
+    .blog_form {
+        width: 92%;
+    }
+}
+
+.blog_head {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.panel-primary {
+    width: 600px;
+}
+
+.item .img-responsive {
+    width: 100%;
+    margin: auto;
+}
+
+#delete {
+    display: inline;
+}
+
+
+/*carousel Slide Show*/
+
+.carousel-inner .item img {
+    width: 100%;
+    height: 200px;
+}
+
+#dropdown_jobs {
+    width: 100%;
+}
+
+
+/* Comming Soon Animations*/
+
+.current_opening {
+    margin-top: -5px;
+}
+
+.embed-responsive {
+    margin: 10px 0 15px 0;
+}
+
+.showpage_fonts {
+    color: #2c3e50;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.showpage_date {
+    float: right;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.showpage_text {
+    margin-left: 30px;
+    text-align: justify;
+    margin-right: 15px;
+}
+
+.showpage_applynow {
+    margin: -10px 0 10px 30px;
+    width: 140px;
+}
+
+hr.showpage_line {
+    margin: 0;
+    overflow: visible;
+    /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: #2c3e50;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+
+hr.showpage_line:before {
+    /* Not really supposed to work, but does */
+    display: block;
+    margin: 0;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: #2c3e50;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+.showpage_applynow a {
+    color: #fff
+}
+
+.showpage_applynow a:hover {
+    text-decoration: none;
+}
+
+/*========================================Blog Page ====================================*/
+
+#blogpage_img{
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+#blogpage_img:hover{
+    border: 3px solid #8c8b8b;
+    box-shadow: #2c3e50;
+}
+.img-fluid p{
+    background: #080808;
+    width:100%;
+    font-size: 18px;
+    backface-visibility: initial;
+    bottom: 10px;
+    color: aliceblue;
+    opacity: 0.8;
+    margin-right: 15px;
+}
+.img-fluid p:hover{
+    background: aliceblue;
+    color: #080808;
+    opacity: 0.8;
+}
+.img-fluid p a {
+    color: aliceblue;
+    text-decoration: none;
+}
+.blogshowpage_text{
+    line-height: 1.5em;
+    text-align: justify;
+}
+.blogshowpage_text::first-letter{
+    height: 200%;
+    color: #2c3e50;
+}
+.blogshowpage_image{
+    height: 300px;
+    width: auto;
+    float: left;
+    display: inline-flex;
+    margin-bottom: 15px;
+    padding-right: 20px;
+}
+#blogshowpage_jumbo{
+    background-image: url("https://images.unsplash.com/photo-1496303861503-f6ec4e50034e?auto=format&fit=crop&w=1050&q=80");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.blogs_para{
+    padding: 0px 10px 0px 10px;
+}
+.blogs_jumbotron{
+    background-image: url("https://images.unsplash.com/photo-1499610519775-f6180db76b5a?auto=format&fit=crop&w=1050&q=80");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.lead{
+    color: aliceblue;
+}
+.jumbotron h1{
+    color: aliceblue;
+}
+.blogshowpage_media{
+    margin-bottom: 20px;
+}
+.form-control{
+    margin-bottom: 10px;
+}
+#delete_form{
+    display: inline-flex;
+}

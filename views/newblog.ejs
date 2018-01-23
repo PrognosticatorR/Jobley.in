@@ -1,0 +1,26 @@
+<% include partials/subheader %>
+<div class="container ">
+    <div class="blog_head" > New Blog</div>
+    <form class="form-horizontal" action="/blogs" method="POST">
+        <div >
+            <label>Title</label>
+            <input type="text" class="form-control" name="blog[title]" placeholder="title">
+        </div>
+        <div >
+            <label>Sub-Title</label>
+            <input type="text" class="form-control" name="blog[subheader]" placeholder="Write Some Description Of Blog">
+        </div>
+        <div >
+            <label>Image</label>
+            <input type="text" class="form-control "  name="blog[image]" placeholder="image">
+        </div>
+        <div >
+            <label>Blog Content</label>
+            <textarea id='ckeditor' rows="4" name="blog[body]"></textarea>
+        </div>
+        <div class="blog_form ">
+            <input type="submit" class="btn btn-primary btn btn-md active">
+        </div>
+    </form>
+    </div>
+   <% include partials/subfooter %>

@@ -1,0 +1,69 @@
+<% include partials/header %>
+<div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading text-center"><b><%=foundJob.title.toUpperCase() %></b></div>
+                    <h3 class="ml-2"><i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <%=foundJob.department%>
+                    </h3>
+                    <p class="showpage_fonts">&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
+                        <%=foundJob.jobLocation%>
+                    </p>
+                    <p class="showpage_fonts"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <%=foundJob.eligibility%>
+                    </p>
+                    <p class="showpage_fonts"><i class="fa fa-briefcase " aria-hidden="true"></i>
+                        <%=foundJob.experience%>
+                    </p>
+                    <hr class="showpage_line">
+                    <div class="showpage_date">Last Date:
+                        <%=foundJob.lastDate%>
+                    </div>
+                    <button class="btn btn-danger showpage_applynow"><a href="<%= foundJob.applyNow %>">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <h4 class="text-center">JOB DETAILS FOR : <u><%=foundJob.title.toUpperCase()%></u></h4>
+                    <hr class="showpage_line">
+                    <div class="showpage_text">
+                        <h4><b><u>About Job</u> :</b></h4>
+                        <p>
+                            <%= foundJob.jobDetails %>
+                        </p>
+                    </div>
+                    <p class="showpage_text"><b>Hiring Process- </b>
+                        <%=foundJob.hiringProcess%>
+                    </p>
+                    <p class="showpage_text"><b>Role- </b>
+                        <%=foundJob.jobRole%>
+                    </p>
+                    <div class="showpage_text">
+                        <h4><b><u>About Organization</u> :</b></h4>
+                        <p>
+                            <%= foundJob.description %>
+                        </p>
+                    </div>
+                    <hr class="showpage_line">
+                    <div class="showpage_date">Last Date:
+                        <%=foundJob.lastDate%>
+                    </div>
+                    <button class="btn btn-danger showpage_applynow"><a href="<%= foundJob.applyNow %>">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    <%if(user){%>
+        <button class="btn btn-warning showpage_applynow">
+                <a  href="/category/<%=category._id%>/job/<%=foundJob._id %>/edit">Edit</a>
+        </button>
+        <form id="delete" action="/category/<%=category._id%>/job/<%=foundJob._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger showpage_applynow">Delete</button>
+        </form>
+    <%}%>
+    </div>
+<% include partials/footer %>
+

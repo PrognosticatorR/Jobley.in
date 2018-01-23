@@ -1,0 +1,45 @@
+<% include partials/subheader %>
+    <div class="container-fluid">
+        <div class="jumbotron blogs_jumbotron">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p class="lead">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+                <a class="btn btn-danger btn-md" href="#" role="button">Learn more</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <% blogs.forEach(function(blog){%>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body blogs_panel">
+                            <div class="img-fluid">
+                                <a href="/blogs/<%=blog.title%>">
+                                    <img id="blogpage_img" class="img-fluid  rounded d-block" src="<%=blog.image%>">
+                                </a>
+                                <a href="/blogs/<%=blog.title%>">
+                                    <p class="blogtile_text text-center">
+                                        <%=blog.title%>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="blogs_para">
+                                <p class="text-justify text-capitalize">
+                                    <%-blog.body.substring(0,150)%>
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <a href="/blogs/<%=blog.title%>">
+                                    Read More >.>..
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%});%>
+        </div>
+    </div>
+    <% include partials/subfooter %>

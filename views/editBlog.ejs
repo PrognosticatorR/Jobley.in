@@ -1,0 +1,27 @@
+<% include partials/subheader %>
+<div class="container ">
+    <div class="blog_head" >Edit <%=blog.title%></div>
+    <form class="form-horizontal" action="/blogs/<%=blog._id%>?_method=PUT" method="POST">
+        <div >
+            <label>Title</label>
+            <input type="text" class="form-control" name="blog[title]" value="<%=blog.title%>">
+        </div>
+        <div >
+            <label>Sub-Title</label>
+            <input type="text" class="form-control" name="blog[subheader]" value="<%=blog.subheader%>">
+        </div>
+        <div >
+            <label>Image</label>
+            <input type="text" class="form-control "  name="blog[image]" value="<%=blog.image%>">
+        </div>
+        <div >
+            <label>Blog Content</label>
+            <textarea id='ckeditor' rows="4" name="blog[body]"><%=blog.title%></textarea>
+        </div>
+        <div class="blog_form ">
+            <input type="submit" class="btn btn-primary btn btn-md active">
+        </div>
+    </form>
+</div>
+<% include partials/subfooter %>
+});

@@ -1,0 +1,11 @@
+
+<% include partials/subheader %>
+<div class="container">
+    <h1>Upload Files</h1>
+    <%= typeof msg != 'undefined' ? msg : '' %>
+    <form action="/uploadFile" method="post" enctype="multipart/form-data">
+        <input class="form-control input-lg form-group" name="myFile" type="file" placeholder="Upload File">
+        <button class="btn btn-md btn-warning" type="submit">Submit</button>
+    </form>
+</div>
+<% include partials/subfooter %>

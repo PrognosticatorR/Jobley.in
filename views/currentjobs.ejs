@@ -1,0 +1,11 @@
+  <% include partials/header %>
+
+<h1>These Are Current Openings!</h1>
+<% currentjobs.forEach(function(currentjob){ %>
+ <div>
+     <h4><%= currentjob.name %></h4>
+     <!--<img src="<%= currentjob.image %>">-->
+ </div>
+<% }) ;%>
+
+  <% include partials/footer %>

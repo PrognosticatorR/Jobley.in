@@ -1,0 +1,44 @@
+<% include partials/header %>
+    <div class="container">
+        <h1>
+            <%= category.title %> Jobs </h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-bordered">
+                            <tr>
+
+                                <th>Title</th>
+                                <th>Posted By</th>
+                                <th>Eligiblity</th>
+                                <th>Job Location</th>
+                                <th>Last Date</th>
+                                <th>More Details</th>
+                            </tr>
+                            <% category.jobs.forEach(function(job){%>
+                                <tr>
+                                    <td><span><%= job.title%></span></td>
+                                    <td>
+                                        <%=job.department %>
+                                    </td>
+                                    <td>
+                                        <%=job.eligibility %>
+                                    </td>
+                                    <td><span><%= job.lastDate %></span></td>
+                                    <td>
+                                        <%= job.jobLocation%>
+                                    </td>
+                                    <td><a href="<%=category._id %>/job/<%=job._id %>">Know More.</a></td>
+                                </tr>
+                                <% }) %>
+                        </table>
+                        <button class="btn-group-lg btn-dark">
+                  <a href="/category/<%= category._id%>/job/new">Post Jobs</a>
+                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include partials/footer %>

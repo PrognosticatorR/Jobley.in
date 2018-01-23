@@ -1,0 +1,25 @@
+<% include partials/header %>
+
+<div class="container">
+        <div class="col-sm-12">
+            <div class="thumbnail job_heading">
+                <h2>Followings Are : <%= category.title %> </h2>
+            </div>
+            <% category.subcategories.forEach(function(sub){ %>
+            <div class="state_names">
+                <div class="col-md-3 col-sm-6">
+                    <div class="state-col-deatlis ">
+                      <p class="text-lg-left">
+                          <a href="<%=category._id%>/<%=sub.title%>" >
+                              <%= sub.title %>
+                          </a>
+                      </p>
+
+                    </div>
+                </div>
+            </div>
+           <% })%>
+        </div>
+
+</div>
+<% include partials/footer %>

@@ -1,0 +1,80 @@
+<% include partials/header %>
+
+ <form class="form-horizontal" action="/category/<%=category._id%>/job/<%=foundJob._id %>?_method=PUT" method="POST">
+     <div class="container blog_form">
+                <div class="job_head">
+                    <h3>  Edit <%=foundJob.title%></h3>
+                </div>
+                <div class="row">
+                    <form class="form-horizontal" action="/category/<%= category._id%>/job/<%=foundJob._id%>?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="job[title]" value='<%=foundJob.title%>'>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="dropdown_jobs" name="job[Category]">
+                                <option>Select One Category</option>
+                                <option value="State Jobs">State Jobs</option>
+                                <option value="Central Jobs">Central Jobs</option>
+                                <option value="Banking Jobs">Bank Jobs</option>
+                                <option value="Railways Jobs">Railways Jobs</option>
+                                <option value="Technical Jobs">Technical Jobs</option>
+                                <option value="SSC Jobs">Staff Selection Commission</option>
+                                <option value="UPSC Jobs">Union Public Service Commission</option>
+                                <option value="Upcoming Jobs">Upcoming Jobs</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>subcategory</label>
+                            <input type="text" class="form-control" name="job[subcategory]" value="<%=foundJob.subcategory%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Eligibility</label>
+                            <input type="text" class="form-control" name="job[eligibility]" value="<%=foundJob.eligibility%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <input type="text" class="form-control" name="job[department]" value="<%=foundJob.department%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Job Location</label>
+                            <input type="text" class="form-control" name="job[jobLocation]" value="<%=foundJob.jobLocation%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Date</label>
+                            <input type="text" class="form-control" name="job[lastDate]" value="<%=foundJob.lastDate%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Required Experience</label>
+                            <input type="text" class="form-control" name="job[experience]" value="<%=foundJob.experience%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Url For Job</label>
+                            <input type="text" class="form-control" name="job[applyNow]" value="<%=foundJob.applyNow%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Job Details</label>
+                            <textarea name="job[jobDetails]" id="" cols="75" rows="10"><%=foundJob.jobDetails%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label> Write About Organization</label>
+                            <textarea name="job[description]" id="" cols="75" rows="10"><%=foundJob.description%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label> Job Role</label>
+                            <input type="text" class="form-control" name="job[jobRole]" value="<%=foundJob.jobRole%>">
+                        </div>
+                        <div class="form-group">
+                            <label>Hiring Process</label>
+                            <input type="text" class="form-control" name="job[hiringProcess]" value="<%=foundJob.hiringProcess%>">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn btn-md active">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+
+    <% include partials/footer %>

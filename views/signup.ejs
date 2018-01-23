@@ -1,0 +1,81 @@
+ <% include partials/subheader %>
+
+    <style>
+        body {
+            background: #bdc3c7;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+    <div class="wrapper">
+        <div class="logo">
+            <h1>Jobley</h1>
+            <p>Find Answers That Matters To You...</p>
+        </div>
+        <div class="outer-wrapper">
+            <div class="container">
+                <div class="inner-wrapper">
+                    <form action="/Jobley_signup" method="post">
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-2 control-label"></label>
+                            <input type="text" class="form-control" id="inputName" aria-required="true" name="username" placeholder="User Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-2 control-label"></label>
+                            <input type="text" class="form-control" id="inputName" aria-required="true" name="firstname" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName" class="col-sm-2 control-label"></label>
+                            <input type="text" class="form-control" id="inputName" name="lastname" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label"></label>
+                            <input type="email" class="form-control" id="inputEmail" aria-required="true" name="email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label"></label>
+                            <input type="password" class="form-control" id="inputPassword" aria-required="true" name="password"
+                                   placeholder="Password (6 or more characters)">
+                        </div>
+                        <div class="form-group">
+                            <p class="disclosure-text">By clicking , you agree to the <b>Jobley</b>
+                                <a target="_blank" class="tapable" href="#">Terms & Conditions</a>,
+                                <a target="_blank" class="tapable" href="#">Privacy Policy</a>.
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Join Now</button>
+                        </div>
+
+                        <div class="fb-btn-container">
+                            <p class="reg-option">
+                                <span class="line-wrapper">
+                                <span class="line"></span>
+                                </span>
+                                <span class="content signup">
+                                <span>OR</span>
+                                </span>
+                            </p>
+                            <div>
+                                <button type="button" id="signup_fb_btn" class="btn btn-primary">
+                                        <i class="fa fa-facebook" aria-hidden="true">
+                                        </i><span class="fb-btn-content">Continue with Facebook</span>
+                            </button>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <span id="signup-question">Alerady a member? <a href="#">Sign In</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ <% include partials/subfooter %>
