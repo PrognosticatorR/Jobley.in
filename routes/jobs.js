@@ -19,7 +19,7 @@ router.get("/", function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.render("subs", {
+                    res.render("allsubs", {
                         category: category
                     });
                 }

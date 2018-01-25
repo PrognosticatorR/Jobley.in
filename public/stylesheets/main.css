@@ -69,10 +69,11 @@ hr.top_line {
     color: white;
     bottom: 20px;
     font-size: 16px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
-
-
+.img-box .jobs_tiles:hover{
+    opacity: 0.5;
+}
 /* ******************************Subnavigation Footer ***************************** */
 
 .subnavigation-container {
@@ -153,6 +154,7 @@ ul {
 }
 a{
     text-decoration: none;
+    color: white;
 }
 .newletter_box h3 {
     font-size: 18px;
@@ -191,7 +193,6 @@ a{
     padding: 0;
 }
 
-/* *********************Images Grid************************ */
 
 .row .thumbnail img {
     width: 100%;
@@ -247,9 +248,6 @@ a{
         padding-right: 8px;
         padding-left: 8px;
     }
-}
-
-@media(min-width: 992px) {
     .col-md-8 {
         padding-right: 8px;
         padding-left: 8px;
@@ -257,13 +255,11 @@ a{
 }
 
 
-/* *****************************Login form********************************** */
-
 .outer-wrapper {
     width: 400px;
     background: rgba(200, 200, 200, 0.74);
     height: auto;
-    margin-top: 160px;
+    margin-top: 8%;
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
@@ -271,7 +267,7 @@ a{
 
 @media (max-width:500px) {
     .outer-wrapper {
-        width: 100%;
+        width: 92%;
     }
 }
 
@@ -286,7 +282,8 @@ a{
 .inner-wrapper .logo_container {
     margin-bottom: 10px;
     text-align: center;
-    font-size: 24px;
+    font-family: 'Damion', cursive;
+    font-size: 30px;
     text-shadow: 1px 1px 2px gray;
     font-weight: bold;
 }
@@ -320,19 +317,18 @@ a{
 }
 
 .logo h1 {
+    padding-top: 15px;
     text-align: center;
     margin: auto;
-    margin-top: 3%;
-    font-size: 24px;
-    font-weight: 700;
-    font-style: italic;
-    font-family: 'Montserrat Alternates', sans-serif;
+    margin-top: 1%;
+    font-size: 30px;
+    font-weight: bold;
+    font-family:'Damion', cursive;
 }
 
 .logo p {
     text-align: center;
     margin: auto;
-    font-family: lato;
     font-size: 1.2em;
 }
 
@@ -355,7 +351,6 @@ a{
 }
 
 .policy_head {
-    font-family: lato;
     font-weight: 800;
     font-size: 2.2em;
     margin-top: 100px;
@@ -372,7 +367,6 @@ a{
 }
 
 .policy_subhead {
-    font-family: lato;
     font-weight: 700;
     font-size: 1.15em;
     text-decoration: underline;
@@ -588,7 +582,7 @@ hr.showpage_line:before {
 }
 
 .blogs_para{
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
 }
 .blogs_jumbotron{
     background-image: url("https://images.unsplash.com/photo-1499610519775-f6180db76b5a?auto=format&fit=crop&w=1050&q=80");
@@ -609,6 +603,31 @@ hr.showpage_line:before {
 .form-control{
     margin-bottom: 10px;
 }
-#delete_form{
-    display: inline-flex;
+form#delete_form{
+    display: inline;
+}
+#inputPassword{
+    padding-right: 30px;
+    position: relative;
+}
+
+.glyphicon-eye-open:before{
+    position: absolute;
+    bottom: 44px;
+    right: 12px;
+    cursor:pointer;
+}
+.showpage_fbbtn{
+    margin-bottom: 10px;
+}
+div.fb-share-button{
+    margin-right: 200px;
+}
+#showpg_btn{
+    margin-right: 15px;
+    width: 150px;
+}
+
+td a{
+    color: #2c3e50;
 }

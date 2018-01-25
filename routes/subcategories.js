@@ -10,7 +10,7 @@ router.get('/newsub', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('newsub', { category: category });
+            res.render('newsubs', { category: category });
         }
     });
 });
@@ -45,7 +45,7 @@ router.get('/:subcategory_title', function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.render('subcategory', {
+                    res.render('subJobs', {
                         foundsubcategory: foundsubcategory,
                         category: category
                     });

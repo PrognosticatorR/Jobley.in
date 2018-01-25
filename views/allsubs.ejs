@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="col-sm-12">
+        <div class="alert alert-info" role="alert">
+            <h3 class="text-center"> Followings Are : <strong><%= category.title %></strong></h3>
+        </div>
+        <% category.subcategories.forEach(function(sub){ %>
+        <div class="state_names">
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <div class="state-col-deatlis ">
+                    <p class="text-lg-left">
+                        <a href="<%= category._id %>/<%= sub.title %>">
+                            <%= sub.title %>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+<% include partials/footer %>

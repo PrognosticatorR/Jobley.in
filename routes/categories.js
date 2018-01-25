@@ -28,7 +28,7 @@ router.post("/", function(req, res) {
 });
 
 router.get('/newcategory', function(req, res) {
-    res.render("newcategory");
+    res.render('newcategory');
 });
 
 module.exports =router;

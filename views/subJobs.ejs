@@ -1,7 +1,7 @@
 <% include partials/header %>
 <div class="container">
     <div class="alert alert-info" role="alert">
-        <h3 class="text-center"><strong><%= category.title %></strong></h3>
+        <h3 class="text-center"><strong><%= foundsubcategory.title %> Jobs</strong></h3>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -9,27 +9,24 @@
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
                         <tr>
-                            <th>Title</th>
+                            <th>Posted On</th>
                             <th>Posted By</th>
-                            <th>Eligiblity</th>
-                            <th>Job Location</th>
+                            <th>Eligibility</th>
                             <th>Last Date</th>
+                            <th>Job Location</th>
                             <th>More Details</th>
                         </tr>
-                        <% category.jobs.forEach(function(job){ %>
+                        <%
+                        var cat = category._id;
+                        %>
+                        <% foundsubcategory.jobs.forEach(function(job){ %>
                         <tr>
-                            <td><span><%= job.title %></span></td>
-                            <td>
-                                <%= job.department %>
-                            </td>
-                            <td>
-                                <%= job.eligibility %>
-                            </td>
+                            <td><span><%= job.created.toDateString() %></span></td>
+                            <td><%= job.department %></td>
+                            <td><%= job.eligibility %></td>
                             <td><span><%= job.lastDate %></span></td>
-                            <td>
-                                <%= job.jobLocation %>
-                            </td>
-                            <td class="jobs_table"><a href="<%= category._id %>/job/<%= job._id %>">Know More.</a></td>
+                            <td><%= job.jobLocation %></td>
+                            <td><a href="/category/<%= category._id %>/job/<%= job._id %>">Know More.</a></td>
                         </tr>
                         <% }) %>
                     </table>
@@ -41,4 +38,5 @@
         </div>
     </div>
 </div>
+
 <% include partials/footer %>

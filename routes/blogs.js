@@ -40,7 +40,7 @@ router.get('/:blog_title', function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.render('blogshow', {
+                    res.render('showblog', {
                         foundBlog: foundBlog,
                         blogs: blogs
                     });
