@@ -77,7 +77,7 @@ router.post('/job',middlewere.isLoggedIn,function(req, res) {
 });
 
 // ============================ Showing A Jobs On ============================
-router.get('/job/:job_id',middlewere.isLoggedIn, function(req, res) {
+router.get('/job/:job_id', function(req, res) {
     Category.findById(req.params.id, function(err, category) {
         if (err) {
             console.log(err);

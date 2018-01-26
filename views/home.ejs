@@ -8,16 +8,16 @@
             <% categories.forEach(function(category){ %>
             <% if(category.image){ %>
             <div class=" col-md-4 col-sm-6 img-box">
-                <div class="img-responsive img-rounded thumbnail">
+                <div  class="img-responsive img-rounded thumbnail">
                     <a class="home_img" href="/category/<%= category._id %>">
-                        <img src="<%= category.image %>">
+                        <img id="home_img" src="<%= category.image %>">
                         <p class="jobs_tiles">
                             <%= category.title %>
                         </p>
                     </a>
                 </div>
             </div>
-            <% } %>
+            <%}%>
             <% }); %>
             <div class=" col-md-8 col-sm-12 longbox img-box">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -90,8 +90,8 @@
         </div>
         <div class="col-md-4 col-sm-4">
             <div class="fb-like" data-href="https://www.facebook.com/jobley.informer/" data-layout="standard"
-                 data-action="like"  data-show-faces="true" data-share="true"></div>
-            <h3 class="text-center current_opening">Current Openings</h3>
+              data-width="310px"   data-action="like"  data-show-faces="true" data-share="true"></div>
+                <h3 class="text-center current_opening">Current Openings</h3>
             <div class="list-group">
                 <% categories.forEach(function(category){ %>
                 <% if(category.title === 'Current Opening'){ %>

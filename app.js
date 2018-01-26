@@ -30,7 +30,8 @@ var authenticationRoutes  = require('./routes/authentication');
 var jobRoutes = require('./routes/jobs');
 var indexRoutes = require('./routes/index');
 
-mongoose.connect('mongodb://localhost/AnswerMachin', { useMongoClient: true });
+console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 var storage = multer.diskStorage({
@@ -104,7 +105,6 @@ app.get('/uploadFile', function(req, res) {
 });
 
 app.post('/uploadFile', function(req, res) {
-
     uplaod(req, res, function(err) {
         if (err) {
             res.render('uploads', {
@@ -165,7 +165,6 @@ app.get('/login', function(req, res){
         csrf: csrf_guid,
         version: account_kit_api_version
     };
-
     var html = Mustache.to_html(loadLogin(), view);
     res.send(html);
 });
@@ -185,14 +184,13 @@ app.post('/login_success', function(request, response){
             code: request.body.code,
             access_token: app_access_token
         };
-
         // exchange tokens
         var token_exchange_url = token_exchange_base_url + '?' + Querystring.stringify(params);
         Request.get({url: token_exchange_url, json: true}, function(err, resp, respBody) {
             var view = {
                 user_access_token: respBody.access_token,
                 expires_at: respBody.expires_at,
-                user_id: respBody.id,
+                user_id: respBody.id
             };
 
             // get account details at /me endpoint
@@ -216,14 +214,6 @@ app.post('/login_success', function(request, response){
     }
 });
 
-
-
 app.listen(3000, function() {
     console.log("Jobley Is Ready For Your Jobs :).");
 });
-
-
-
-
-
-

@@ -108,7 +108,6 @@ hr.top_line {
 
 .footer {
     background: #15202a none repeat scroll 0 0 !important;
-    background: #2d2d2d;
     color: #fff;
     padding: 30px 0 40px;
     position: relative;
@@ -460,7 +459,7 @@ p a {
 }
 
 
-/* Comming Soon Animations*/
+/*--------------------------------!* Comming Soon Animations*!--------------------------*/
 
 .current_opening {
     margin-top: -5px;
@@ -630,4 +629,36 @@ div.fb-share-button{
 
 td a{
     color: #2c3e50;
+}
+.current_opening{
+    margin-top: 15px;
+}
+
+@media (max-width: 550px) {
+    #home_img {
+        display: none;
+    }
+    .jobs_tiles{
+        margin-bottom:15px;
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 1.6em;
+    }
+    .jobs_tiles:hover{
+        background: aliceblue;
+        color: #080808;
+        opacity: 0.6;
+    }
+    .container{
+        width: 95%;
+    }
+    .fb_like{
+        width: 300px;
+    }
+.current_opening{
+    margin-top: 10px;
+}
+    .navbar-inverse .navbar-brand{
+        margin-left: 0;
+    }
 }

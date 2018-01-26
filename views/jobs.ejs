@@ -33,9 +33,11 @@
                         </tr>
                         <% }) %>
                     </table>
+                    <%if(user){%>
                     <button class="btn btn-info">
                         <a href="/category/<%= category._id %>/job/new">Post Jobs</a>
                     </button>
+                    <%}%>
                 </div>
             </div>
         </div>
