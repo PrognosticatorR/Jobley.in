@@ -1,6 +1,7 @@
 var express =require('express');
 var router = express.Router();
 var Category = require('../models/categories');
+var Blog= require('../models/blogs');
 
 
 router.get('/', function(req, res) {
@@ -8,9 +9,18 @@ router.get('/', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("home", {
-                categories: categories
-            });
+            Blog.find({},function (err,blogs){
+                if(err){
+                    req.flash('error','Not Found'+ 404 +'Error.' );
+                    console.log(err);
+                }
+                else{
+                    res.render("home", {
+                        categories: categories,
+                        blogs:blogs
+                    });
+                }
+            })
         }
     });
 });

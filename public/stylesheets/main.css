@@ -206,11 +206,12 @@ a{
 }
 
 .blogbox {
-    height: 200px;
+    height: 220px;
     text-overflow: ellipsis;
     overflow: hidden;
     position: relative;
     margin-bottom: 25px;
+    display: -webkit-box;
 }
 
 .blogbox a {
@@ -218,28 +219,12 @@ a{
     bottom: 5px;
     right: 10px;
 }
-.blogbox .btn-warning {
-    background-color: #2c3e50;
-    border-color: #2c3e50;
-}
+
 .blogbox h3 {
     position: absolute;
     top: -15px;
-    font-size: 1.6em;
-}
-
-.blogbox p {
-    position: absolute;
-    top: 30px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    line-height:1.41em ;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    cursor: pointer;
-    height: 190px;
+    font-size: 1.4em;
+    margin-bottom: 10px;
 }
 
 @media(min-width: 992px) {
@@ -661,4 +646,57 @@ td a{
     .navbar-inverse .navbar-brand{
         margin-left: 0;
     }
+}
+
+/*/------------------------------*BLOGShOME pAGE sLIDER*--------------------------------/*/
+
+.item-1,
+.item-2,
+.item-3 {
+    position: absolute;
+    display: block;
+    top: 2em;
+    width: 75%;
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    text-align: justify;
+}
+
+.item-1{
+    animation-name: anim-1;
+}
+
+.item-2{
+    animation-name: anim-2;
+}
+
+.item-3{
+    animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+    0%, 8.3% { left: -100%; opacity: 0; }
+    8.3%,25% { left: 25%; opacity: 1; }
+    33.33%, 100% { left: 100%; opacity: 0; }
+}
+
+@keyframes anim-2 {
+    0%, 33.33% { left: -100%; opacity: 0; }
+    41.63%, 58.29% { left: 25%; opacity: 1; }
+    66.66%, 100% { left: 100%; opacity: 0; }
+}
+
+@keyframes anim-3 {
+    0%, 66.66% { left: -100%; opacity: 0; }
+    74.96%, 91.62% { left: 25%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+a#blog_media{
+    color: #2c3e50;
+}
+a#blog_media:hover{
+    color: black;
+    text-decoration: none;
 }

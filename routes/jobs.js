@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ==================  Showing Jobs On A category Route ========================
 router.get("/", function(req, res) {
     Category.findById(req.params.id).populate("jobs").exec(function(err, category) {
-        if (err) {
-            console.log(err);
+        if (err || !category) {
+            req.flash('error','Category Not Found. ERROR'+404);
         } else if (category.subcategories.length > 0) {
             Category.findById(req.params.id).populate("subcategories").exec(function(err, category) {
                 if (err) {

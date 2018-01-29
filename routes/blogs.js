@@ -1,15 +1,16 @@
-var express =require('express');
+var express = require('express');
 var router = express.Router();
 var Blog = require('../models/blogs');
+var middlewere = require('../middlewere');
 
-router.get('/new', function(req, res) {
+router.get('/new',middlewere.isLoggedIn, function (req, res) {
     res.render('newblog', {
         result: 'result'
     });
 });
 
-router.post('/', function(req, res) {
-    Blog.create(req.body.blog, function(err, newblog) {
+router.post('/',middlewere.isLoggedIn, function (req, res) {
+    Blog.create(req.body.blog, function (err, newblog) {
         if (err) {
             console.log(err);
         } else {
@@ -19,10 +20,12 @@ router.post('/', function(req, res) {
     });
 });
 
-router.get('/', function(req, res) {
-    Blog.find({}, function(err, blogs) {
-        if (err) {
-            console.log(err);
+router.get('/', function (req, res) {
+    Blog.find({}, function (err, blogs) {
+        if (err || !blogs) {
+            console.error(err);
+            req.flash('error','Somethng Went Wrong,Blog Not Found.');
+            res.redirect('/blogs')
         } else {
             res.render('blogs', {
                 blogs: blogs
@@ -31,14 +34,18 @@ router.get('/', function(req, res) {
     });
 });
 
-router.get('/:blog_title', function(req, res) {
-    Blog.find({}, function(err, blogs) {
-        if (err) {
-            console.log(err);
+router.get('/:blog_title', function (req, res) {
+    Blog.find({}, function (err, blogs) {
+        if (err || !blogs) {
+            console.error(err);
+            req.flash('error','Somethng Went Wrong,Blog Not Found.');
+            res.redirect('/blogs');
         } else {
-            Blog.findOne({ title: req.params.blog_title }, function(err, foundBlog) {
-                if (err) {
-                    console.log(err);
+            Blog.findOne({title: req.params.blog_title}, function (err, foundBlog) {
+                if (err || !foundBlog) {
+                    console.error(err);
+                    req.flash('error','Somethng Went Wrong,Blog Not Found.');
+                    res.redirect('/blogs');
                 } else {
                     res.render('showblog', {
                         foundBlog: foundBlog,
@@ -51,24 +58,28 @@ router.get('/:blog_title', function(req, res) {
 });
 
 // EDIT ROUTE
-router.get('/:blog_title/edit',function (req,res) {
-    Blog.findOne({title: req.params.blog_title},function(err,foundBlog) {
-        if(err){
-            console.log(err);
-        }else {
-            res.render('editBlog',{
+router.get('/:blog_title/edit',middlewere.isLoggedIn, function (req, res) {
+    Blog.findOne({title: req.params.blog_title}, function (err, foundBlog) {
+        if (err || !foundBlog) {
+            res.error(err);
+            req.flash('error','Somethng Went Wrong,Blog Not Found.');
+            res.redirect('/blogs');
+        } else {
+            res.render('editBlog', {
                 blog: foundBlog,
-            foundBlog:foundBlog});
+                foundBlog: foundBlog
+            });
         }
     })
 });
 
 // UPDATE ROUTE
 
-router.put('/:blog_id',function (req,res) {
+router.put('/:blog_id',middlewere.isLoggedIn, function (req, res) {
     Blog.findByIdAndUpdate(req.params.blog_id, req.body.blog, {new: true}, function (err, updatedBlog) {
-        if (err) {
-            req.redirect('/blogs')
+        if (err || !updatedBlog) {
+            req.flash('error','Somethng Went Wrong,Blog Not Found.');
+            res.redirect('/blogs');
         } else {
             res.redirect('/blogs/' + updatedBlog.title)
         }
@@ -77,15 +88,15 @@ router.put('/:blog_id',function (req,res) {
 
 // Delete Route
 
-router.delete('/:blog_id',function (req,res) {
-    Blog.findByIdAndRemove(req.params.blog_id,function (err) {
-        if(err){
+router.delete('/:blog_id',middlewere.isLoggedIn, function (req, res) {
+    Blog.findByIdAndRemove(req.params.blog_id, function (err) {
+        if (err) {
             console.log(err);
-        }else{
+        } else {
             res.redirect('/blogs');
         }
     });
 });
 
 
-module.exports =router;
+module.exports = router;

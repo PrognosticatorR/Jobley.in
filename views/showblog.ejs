@@ -1,4 +1,15 @@
 <% include partials/subheader %>
+
+<script>
+    function randomNo() {
+        var random = Math.floor((Math.random()*blogs.length));
+        if(random >= blogs.lengtn-8){
+            random = blogs.length-8
+        }
+        return random;
+    }
+</script>
+
 <div class="jumbotron-fluid">
     <div class="container">
         <div class="row">
@@ -15,12 +26,23 @@
                 <p class="blogshowpage_text">
                     <%-foundBlog.body%>
                 </p>
+                <%if(user){%>
                 <a class="btn btn-warning btn-sm" href="/blogs/<%=foundBlog.title%>/edit">Edit</a>
                 <form id="delete_form" action="/blogs/<%=foundBlog._id%>?_method=delete" method="post">
                     <button class="btn btn-danger btn-sm">Delete</button>
                 </form>
+                <%}%>
             </div>
-            <%blogs.slice(0,6).forEach(function(blog){%>
+            <% var random = 0;%>
+            <%if(random >= blogs.length-8 && random>=16){%>
+            <%random = Math.floor((Math.random()*blogs.length))-8;%>
+            <%}else if(random>=8 && random<16){%>
+             <% random = Math.floor((Math.random()*blogs.length));%>
+            <%}else{%>
+            <%random = 0;%>
+            <%console.log(random)%>
+            <%}%>
+            <%blogs.slice(random,random+8).forEach(function(blog){%>
             <div class="col-sm-4 ">
                 <div class="media blogshowpage_media">
                     <div class="media-left">
@@ -29,10 +51,12 @@
                         </a>
                     </div>
                     <div class="media-body">
+                        <a id="blog_media" href="/blogs/<%=blog.title%>">
                         <h4 class="media-heading"><%=blog.title.toUpperCase()%></h4>
                         <div class="text-justify">
-                            <%=blog.body.substring(0,150)%>
+                            <%=blog.body.substring(0,130)%>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>

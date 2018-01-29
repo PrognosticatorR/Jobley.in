@@ -21,7 +21,7 @@ router.post('/Jobley_login', passport.authenticate('local', {
 router.get('/Jobley_logout', function (req, res) {
     req.logOut();
     req.flash('success', 'Logged Out !');
-    res.redirect('/');
+    res.redirect('back');
 });
 
 

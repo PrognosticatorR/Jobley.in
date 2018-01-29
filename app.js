@@ -12,9 +12,9 @@ var bodyParser = require('body-parser'),
     crypto = require('crypto'),
     flash = require('connect-flash'),
     Guid = require('guid'),
-    Mustache  = require('mustache'),
-    Request  = require('request'),
-    Querystring  = require('querystring');
+    Mustache = require('mustache'),
+    Request = require('request'),
+    Querystring = require('querystring');
 
 var Category = require('./models/categories'),
     Job = require('./models/jobs'),
@@ -22,22 +22,21 @@ var Category = require('./models/categories'),
     Blog = require('./models/blogs'),
     User = require('./models/users');
 
-
 var categoryRoutes = require('./routes/categories');
 var subCategoryRoutes = require('./routes/subcategories');
-var blogRoutes  = require('./routes/blogs');
-var authenticationRoutes  = require('./routes/authentication');
+var blogRoutes = require('./routes/blogs');
+var authenticationRoutes = require('./routes/authentication');
 var jobRoutes = require('./routes/jobs');
 var indexRoutes = require('./routes/index');
 
-console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
+// DATABASEURL= mongodb://localhost/Jobley
+mongoose.connect('mongodb://localhost/AnswerMachin', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 var storage = multer.diskStorage({
     destination: './public/uploads/',
     filename: function(req, file, cb) {
-        cb(null,'Jobley '+ '-' + Date.now().toDateString()+ path.extname(file.originalname));
+        cb(null, 'Jobley ' + '-' + Date.now().toDateString() + path.extname(file.originalname));
     }
 });
 var uplaod = multer({
@@ -59,7 +58,6 @@ function checkFileType(file, cb) {
         cb('Error: Please Upload Images And PDF Only');
     }
 }
-
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -85,10 +83,10 @@ app.use(function(req, res, next) {
 });
 
 app.use(categoryRoutes);
-app.use('/category/:id',subCategoryRoutes);
+app.use('/category/:id', subCategoryRoutes);
 app.use(indexRoutes);
-app.use('/category/:id',jobRoutes);
-app.use('/blogs',blogRoutes);
+app.use('/category/:id', jobRoutes);
+app.use('/blogs', blogRoutes);
 app.use(authenticationRoutes);
 
 
@@ -101,7 +99,7 @@ var token_exchange_base_url = 'https://graph.accountkit.com/{{v1.0}}/access_toke
 
 // =========================================================================================================
 app.get('/uploadFile', function(req, res) {
-    res.render('uploads',{result:'result'});
+    res.render('uploads', { result: 'result' });
 });
 
 app.post('/uploadFile', function(req, res) {
@@ -133,7 +131,7 @@ app.get('/files', function(req, res) {
         if (item.split('.').pop() === 'png' ||
             item.split('.').pop() === 'jpg' ||
             item.split('.').pop() === 'jpeg' ||
-            item.split('.').pop() === 'svg'||
+            item.split('.').pop() === 'svg' ||
             item.split('.').pop() === 'pdf') {
             var ABC = {
                 image: '/uploads/' + item,
@@ -159,7 +157,7 @@ function loadLogin() {
     return fs.readFileSync('views/login.html').toString();
 }
 
-app.get('/login', function(req, res){
+app.get('/login', function(req, res) {
     var view = {
         appId: app_id,
         csrf: csrf_guid,
@@ -174,7 +172,7 @@ function loadLoginSuccess() {
     return fs.readFileSync('dist/login_success.html').toString();
 }
 
-app.post('/login_success', function(request, response){
+app.post('/login_success', function(request, response) {
 
     // CSRF check
     if (request.body.csrf === csrf_guid) {
@@ -186,7 +184,7 @@ app.post('/login_success', function(request, response){
         };
         // exchange tokens
         var token_exchange_url = token_exchange_base_url + '?' + Querystring.stringify(params);
-        Request.get({url: token_exchange_url, json: true}, function(err, resp, respBody) {
+        Request.get({ url: token_exchange_url, json: true }, function(err, resp, respBody) {
             var view = {
                 user_access_token: respBody.access_token,
                 expires_at: respBody.expires_at,
@@ -195,7 +193,7 @@ app.post('/login_success', function(request, response){
 
             // get account details at /me endpoint
             var me_endpoint_url = me_endpoint_base_url + '?access_token=' + respBody.access_token;
-            Request.get({url: me_endpoint_url, json:true }, function(err, resp, respBody) {
+            Request.get({ url: me_endpoint_url, json: true }, function(err, resp, respBody) {
                 // send login_success.html
                 if (respBody.phone) {
                     view.phone_num = respBody.phone.number;
@@ -206,10 +204,9 @@ app.post('/login_success', function(request, response){
                 response.send(html);
             });
         });
-    }
-    else {
+    } else {
         // login failed
-        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.writeHead(200, { 'Content-Type': 'text/html' });
         response.end("Something went wrong. :( ");
     }
 });
