@@ -11,6 +11,7 @@ var jobSchema = new mongoose.Schema({
     title: String,
     experience: String,
     applyNow: String,
+    pdfUrl:String,
     jobDetails: String,
     description: String,
     hiringProcess: String,

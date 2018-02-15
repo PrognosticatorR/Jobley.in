@@ -1,0 +1,16 @@
+<% include partials/header %>
+
+    <div class="container blog_form">
+        <h1 style="text-align : center">Add a new Job Category</h1>
+        <div class="job_head"> </div>
+        <form class="form-horizontal" action="/cat" method="POST">
+            <div class="form-group ">
+                <label>Name The Category</label>
+                <input class="form-control" type="text" name="shortcat[title]" placeholder="title">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-large btn-primary btn-block"> Submit !</button>
+            </div>
+        </form>
+    </div>
+    <% include partials/footer %>

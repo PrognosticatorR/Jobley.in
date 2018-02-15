@@ -1,49 +1,59 @@
-var express =require('express');
-var router = express.Router({mergeParams: true});
+var express = require('express');
+var trimRequest = require('trim-request');
+var router = express.Router({ mergeParams: true });
 var Category = require('../models/categories');
 var SubCategory = require('../models/subcategories');
-
+var middlewere = require('../middlewere');
 
 // ========================Route For Create SubCategories =================================
-router.get('/newsub', function(req, res) {
-    Category.findById(req.params.id, function(err, category) {
-        if (err) {
-            console.log(err);
+router.get('/newsub', middlewere.isLoggedIn, function(req, res) {
+    Category.findOne({ title: req.params.cat_title }, function(err, category) {
+        if (err || !category) {
+            console.error(err);
+            req.flash('error', 'Unable To Find Category.');
+            res.redirect('back');
         } else {
             res.render('newsubs', { category: category });
         }
     });
 });
 
-router.post('/', function(req, res) {
-    Category.findById(req.params.id, function(err, category) {
-        if (err) {
-            console.log(err);
+router.post('/', trimRequest.all, middlewere.isLoggedIn, function(req, res) {
+    Category.findOne({ title: req.params.cat_title }, function(err, category) {
+        if (err || !category) {
+            console.error(err);
+            req.flash('error', 'Unable To Find Category.');
+            res.redirect('back');
         } else {
-            console.log(category);
+            SubCategory.create(req.body.subcategory, function(err, subcategory) {
+                if (err || !subcategory) {
+                    console.error('You Are In truble.');
+                    req.flash('error', 'Sub-category Not Found.');
+                    res.redirect('back');
+                } else {
+                    console.log(subcategory);
+                    category.subcategories.push(subcategory);
+                    category.save();
+                    res.redirect('/category/' + req.params.cat_title);
+                }
+            });
         }
-        SubCategory.create(req.body.subcategory, function(err, subcategory) {
-            if (err) {
-                console.log('You Are In truble.');
-            } else {
-                console.log(subcategory);
-                category.subcategories.push(subcategory);
-                category.save();
-                res.redirect('/category/' + category._id);
-            }
-        });
     });
 });
 
 
 router.get('/:subcategory_title', function(req, res) {
     SubCategory.findOne({ title: req.params.subcategory_title }).populate('jobs').exec(function(err, foundsubcategory) {
-        if (err) {
-            console.log(err);
+        if (err || !foundsubcategory) {
+            console.error(err);
+            req.flash('error', 'Unable To Find Subcategory.');
+            res.redirect('back');
         } else {
-            Category.findById(req.params.id, function(err, category) {
-                if (err) {
-                    console.log(err);
+            Category.findOne({ title: req.params.cat_title }, function(err, category) {
+                if (err || !category) {
+                    console.error(err);
+                    req.flash('error', 'Unable To Find Category.');
+                    res.redirect('back');
                 } else {
                     res.render('subJobs', {
                         foundsubcategory: foundsubcategory,
@@ -55,4 +65,4 @@ router.get('/:subcategory_title', function(req, res) {
     });
 });
 
-module.exports =router;
+module.exports = router;

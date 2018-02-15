@@ -1,44 +1,44 @@
 <% include partials/header %>
-<div class="container">
-    <div class="alert alert-info" role="alert">
-        <h3 class="text-center"><strong><%= foundsubcategory.title %> Jobs</strong></h3>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-condensed table-bordered">
-                        <tr>
-                            <th>Posted On</th>
-                            <th>Posted By</th>
-                            <th>Eligibility</th>
-                            <th>Last Date</th>
-                            <th>Job Location</th>
-                            <th>More Details</th>
-                        </tr>
-                        <%
+    <div class="container">
+        <div class="alert alert-info" role="alert">
+            <h3 class="text-center"><strong><%= foundsubcategory.title %> Jobs</strong></h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <th>Posted On</th>
+                    <th>Posted By</th>
+                    <th>Eligibility</th>
+                    <th>Last Date</th>
+                    <th>Job Location</th>
+                    <th>More Details</th>
+                </tr>
+                <%
                         var cat = category._id;
                         %>
-                        <% foundsubcategory.jobs.forEach(function(job){ %>
+                    <% foundsubcategory.jobs.slice().reverse().forEach(function(job){ %>
                         <tr>
                             <td><span><%= job.created.toDateString() %></span></td>
-                            <td><%= job.department %></td>
-                            <td><%= job.eligibility %></td>
+                            <td>
+                                <%= job.department %>
+                            </td>
+                            <td>
+                                <%= job.eligibility %>
+                            </td>
                             <td><span><%= job.lastDate %></span></td>
-                            <td><%= job.jobLocation %></td>
-                            <td><a href="/category/<%= category._id %>/job/<%= job._id %>">Know More.</a></td>
+                            <td>
+                                <%= job.jobLocation %>
+                            </td>
+                            <td><a href="/category/<%= category.title %>/job/<%= job.title %>">Know More.</a></td>
                         </tr>
                         <% }) %>
-                    </table>
-                    <%if(user){%>
-                    <button class="btn btn-info">
-                        <a href="/category/<%= category._id %>/job/new">Post Jobs</a>
+            </table>
+            <%if(user){%>
+                <button class="btn btn-info">
+                        <a href="/category/<%= category.title %>/job/new">Post Jobs</a>
                     </button>
-                    <%}%>
-                </div>
-            </div>
+                <%}%>
         </div>
     </div>
-</div>
 
-<% include partials/footer %>
+    <% include partials/footer %>

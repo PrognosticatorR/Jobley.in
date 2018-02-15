@@ -1,23 +1,26 @@
-var express =require('express');
+var express = require('express');
 var router = express.Router();
 var Category = require('../models/categories');
-var Blog= require('../models/blogs');
+var Blog = require('../models/blogs');
+var middlewere = require('../middlewere');
 
 
 router.get('/', function(req, res) {
     Category.find({}).populate('jobs').exec(function(err, categories) {
-        if (err) {
-            console.log(err);
+        if (err || !categories) {
+            console.error(err);
+            req.flash('error', 'categories not Found.');
+            res.redirect('back');
         } else {
-            Blog.find({},function (err,blogs){
-                if(err){
-                    req.flash('error','Not Found'+ 404 +'Error.' );
-                    console.log(err);
-                }
-                else{
+            Blog.find({}, function(err, blogs) {
+                if (err || !blogs) {
+                    console.error(err);
+                    req.flash('error', 'Blogs Not Found' + 404 + 'Error.');
+                    res.redirect('back');
+                } else {
                     res.render("home", {
                         categories: categories,
-                        blogs:blogs
+                        blogs: blogs
                     });
                 }
             })
@@ -26,19 +29,19 @@ router.get('/', function(req, res) {
 });
 
 //========================= Posting data on home ============================
-router.post("/", function(req, res) {
+router.post("/", middlewere.isLoggedIn, function(req, res) {
     Category.create(req.body.category, function(err, newlyCreated) {
         if (err) {
             console.log(err);
         } else {
-            console.log(newlyCreated);
+            req.flash('success','Category created successfully :) !');
             res.redirect("/");
         }
     });
 });
 
-router.get('/newcategory', function(req, res) {
+router.get('/newcategory',middlewere.isLoggedIn, function(req, res) {
     res.render('newcategory');
 });
 
-module.exports =router;
+module.exports = router;

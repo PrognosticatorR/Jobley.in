@@ -1,92 +1,131 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/Jobley.ico" type="image/jpg" sizes="16x16">
     <title>Jobley</title>
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:700,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="/stylesheets/main.css">
     <script type="text/javascript" src="/javascript/index.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90178448-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-90178448-2');
+    </script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PVJTRHM');
+    </script>
+
 </head>
 
 <body>
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<a class href="#">Some Links For Hot Items</a>
-<nav class="navbar navbar-inverse  navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header ">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVJTRHM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <a class href="#">Some Links For Hot Items</a>
+    <nav class="navbar navbar-inverse  navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header ">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo_text" href="/"><u>J</u>obley.in </a>
-        </div>
+                <a class="navbar-brand logo_text" href="/"><u>J</u>obley.in </a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="/Jobley_aboutus">About Us</a></li>
-                <li><a href="#">Upcoming Jobs</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">More<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Results</a></li>
-                        <li><a href="#">Current Openings</a></li>
-                        <li><a href="#"> Job Near By You</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Follow Us</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Ask Questions</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <% if(!user){ %>
-                <li><a href="/Jobley_signup">SignUp <i class="fa fa-lg fa-user-plus" aria-hidden="true"></i></a></li>
-                <li><a href="/Jobley_login">LogIn <i class="fa fa-lg fa-user" aria-hidden="true"></i></a></li>
-                <% }else{ %>
-                <li><a>Signed In As <%= user.firstname %></a></li>
-                <li><a href="/Jobley_logout">Log Out <i class=" fa fa-lg fa-sign-out" aria-hidden="true"></i></a></li>
-                <% } %>
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/cat/Results">Results</a></li>
+                    <li><a href="/cat/Admit Cards">Admit Cards</a></li>
+                    <li><a href="/cat/Old Papers">Old Papers</a></li>
+                    <li><a href="/category/Internships">Internships</a></li>
+                    <li><a href="/category/Latest Jobs">Latest Jobs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/category/Results">Results</a></li>
+                            <li><a href="/category/Staff Selection Commission(SSC)">Staff Selection Commission(SSC)</a></li>
+                            <li><a href="/category/Banking Jobs">Banking Jobs</a></li>
+                            <li><a href="/category/Central Jobs">Central Jobs</a></li>
+                            <li><a href="/category/State Jobs">State Jobs</a></li>
+                            <li><a href="/category/Admitcard">Railways Jobs</a></li>
+                            <li><a href="/cat/Old Papers">Old Papers</a></li>
+                            <li><a href="/category/Union Public Service Commission(UPSC)">Union Public Service Commission(UPSC)</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/comingsoon">Follow Us</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/askUs">Ask Questions</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/contact-us">Contact Us <i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> </a></li>
+                    <% if(user){ %>
+                        <li><a>Welcome <strong><%= user.username %></strong></a></li>
+                        <li><a href="/logout"><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
+                        <% } %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
+        <!-- /.container-fluid -->
+    </nav>
+    <hr class="top_line">
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error%>
+            </div>
+            <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                    <% } %>
     </div>
-    <!-- /.container-fluid -->
-</nav>
-<hr class="top_line">
-<div class="container">
-    <% if(error && error.length > 0){ %>
-    <div class="alert alert-danger" role="alert">
-        <%=error%>
-    </div>
-    <% } %>
-    <% if(success && success.length > 0){ %>
-    <div class="alert alert-success" role="alert">
-        <%=success%>
-    </div>
-    <% } %>
-</div>

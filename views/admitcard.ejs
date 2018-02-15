@@ -1,0 +1,30 @@
+<% include partials/subheader %>
+    <div class="container">
+        <div class="alert alert-info" role="alert">
+            <h3 class="text-center "><strong><%= foundCat.title %> Page</strong></h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Link For Download/Details</th>
+                </tr>
+                <% foundCat.admits.slice().reverse().forEach(function(card){ %>
+                    <tr>
+                        <td><span><%= card.title %></span></td>
+                        <td><span><%= card.created.toDateString() %></span></td>
+                        <td class="jobs_table"><a href="<%=card.download%>"><span>Go To <%=foundCat.title%> Page</span></a></td>
+                    </tr>
+
+                    <% }) %>
+            </table>
+            <%if(user){%>
+                <button class="btn btn-info">
+                        <a href="/cat/<%=foundCat.title %>/new">Post</a>
+                    </button>
+                <%}%>
+        </div>
+    </div>
+
+    <% include partials/subfooter %>

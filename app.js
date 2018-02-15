@@ -1,69 +1,63 @@
-var bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    expressSanitizer = require('express-sanitizer'),
-    mongoose = require('mongoose'),
-    express = require('express'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose'),
-    multer = require('multer'),
-    fs = require('fs'),
-    path = require('path'),
-    crypto = require('crypto'),
-    flash = require('connect-flash'),
-    Guid = require('guid'),
-    Mustache = require('mustache'),
-    Request = require('request'),
-    Querystring = require('querystring');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var expressSanitizer = require('express-sanitizer');
+var mongoose = require('mongoose');
+var compression = require('compression');
+var express = require('express');
+var dotenv = require('dotenv').config();
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose');
+var session = require('express-session');
+var fs = require('fs');
+var path = require('path');
+var crypto = require('crypto');
+var flash = require('connect-flash');
+var Guid = require('guid');
+var Mustache = require('mustache');
+var Request = require('request');
+var Querystring = require('querystring');
+var helmet = require('helmet');
+var cookieParser = require('cookie-parser');
 
-var Category = require('./models/categories'),
-    Job = require('./models/jobs'),
-    SubCategory = require('./models/subcategories'),
-    Blog = require('./models/blogs'),
-    User = require('./models/users');
+var Category = require('./models/categories');
+var Job = require('./models/jobs');
+var SubCategory = require('./models/subcategories');
+var Blog = require('./models/blogs');
+var User = require('./models/users');
+var shortCat = require('./models/shortCat');
 
+var config = require('./config/config');
+
+var admitCardRoutes = require('./routes/admit&result');
 var categoryRoutes = require('./routes/categories');
 var subCategoryRoutes = require('./routes/subcategories');
 var blogRoutes = require('./routes/blogs');
 var authenticationRoutes = require('./routes/authentication');
 var jobRoutes = require('./routes/jobs');
 var indexRoutes = require('./routes/index');
+var admitCardRoutes = require('./routes/admit&result');
 
-// DATABASEURL= mongodb://localhost/Jobley
+var isDev = process.env.NODE_ENV !== 'production';
+var port = process.env.PORT || 8080;
 mongoose.connect('mongodb://localhost/AnswerMachin', { useMongoClient: true });
+// mongoose.connect(isDev ? config.db_dev : config.db, {
+//     useMongoClient: true,
+// });
 mongoose.Promise = global.Promise;
 
-var storage = multer.diskStorage({
-    destination: './public/uploads/',
-    filename: function(req, file, cb) {
-        cb(null, 'Jobley ' + '-' + Date.now().toDateString() + path.extname(file.originalname));
-    }
-});
-var uplaod = multer({
-    storage: storage,
-    limits: { fileSize: 5000000 },
-    fileFilter: function(req, file, cb) {
-        checkFileType(file, cb);
-    }
-}).single('myFile');
-
-function checkFileType(file, cb) {
-    var filetypes = /jpeg|jpg|png|gif|pdf/;
-    var extname = filetypes.test(path.extname(file.originalname).toLocaleLowerCase());
-    var mimetype = filetypes.test(file.mimetype);
-
-    if (extname && mimetype) {
-        return cb(null, true);
-    } else {
-        cb('Error: Please Upload Images And PDF Only');
-    }
-}
-
 var app = express();
+app.use(compression());
 app.set('view engine', 'ejs');
 
+app.use(cookieParser());
+app.use(session({
+    secret: 'seeeionsecrete',
+    saveUninitialized: false,
+    resave: false
+}));
 app.use(require('express-session')({
-    secret: 'Jobley Is Going To Rock.',
+    secret: 'expresssessionsecrete',
     resave: false,
     saveUninitialized: false
 }));
@@ -75,6 +69,7 @@ app.use(bodyParser.json());
 app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 app.use(flash());
+app.use(helmet());
 app.use(function(req, res, next) {
     res.locals.user = req.user;
     res.locals.error = req.flash('error');
@@ -82,135 +77,22 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use(categoryRoutes);
-app.use('/category/:id', subCategoryRoutes);
+app.use('/category/:cat_title', subCategoryRoutes);
 app.use(indexRoutes);
-app.use('/category/:id', jobRoutes);
+app.use('/category/:cat_title', jobRoutes);
 app.use('/blogs', blogRoutes);
 app.use(authenticationRoutes);
+app.use(admitCardRoutes);
 
-
-var csrf_guid = Guid.raw();
-var account_kit_api_version = '{{v1.0}}';
-var app_id = '{{2008484556034576}}';
-var app_secret = '{{ef1f01dfd490c6b74feed73f996fd1d9}}';
-var me_endpoint_base_url = 'https://graph.accountkit.com/{{v1.0}}/me';
-var token_exchange_base_url = 'https://graph.accountkit.com/{{v1.0}}/access_token';
-
-// =========================================================================================================
-app.get('/uploadFile', function(req, res) {
-    res.render('uploads', { result: 'result' });
-});
-
-app.post('/uploadFile', function(req, res) {
-    uplaod(req, res, function(err) {
-        if (err) {
-            res.render('uploads', {
-                msg: err,
-                file: req.file
-            });
-        } else {
-            if (req.file === undefined) {
-                res.render('uploads', {
-                    msg: "Error : No File Selected ."
-                });
-            } else {
-                console.log(req.file);
-                res.render('uploads', {
-                    msg: "File Uploaded Successfully."
-                });
-            }
-        }
-    });
-});
-
-app.get('/files', function(req, res) {
-    var files = fs.readdirSync('public/uploads');
-    var blogImage = [];
-    files.forEach(function(item) {
-        if (item.split('.').pop() === 'png' ||
-            item.split('.').pop() === 'jpg' ||
-            item.split('.').pop() === 'jpeg' ||
-            item.split('.').pop() === 'svg' ||
-            item.split('.').pop() === 'pdf') {
-            var ABC = {
-                image: '/uploads/' + item,
-                folder: '/'
-            };
-            blogImage.push(ABC);
-        }
-    });
-    res.send(blogImage);
-});
-
-app.post('/delete_file', function(req, res) {
-    var url_del = 'public' + req.body.url_del;
-    console.log(url_del);
-    if (fs.existsSync(url_del)) {
-        fs.unlinkSync(url_del);
+app.listen(port, '0.0.0.0', function(req, res, err) {
+    if (err) {
+        console.log(err);
     }
-    res.redirect('back');
-});
-
-
-function loadLogin() {
-    return fs.readFileSync('views/login.html').toString();
-}
-
-app.get('/login', function(req, res) {
-    var view = {
-        appId: app_id,
-        csrf: csrf_guid,
-        version: account_kit_api_version
-    };
-    var html = Mustache.to_html(loadLogin(), view);
-    res.send(html);
-});
-
-
-function loadLoginSuccess() {
-    return fs.readFileSync('dist/login_success.html').toString();
-}
-
-app.post('/login_success', function(request, response) {
-
-    // CSRF check
-    if (request.body.csrf === csrf_guid) {
-        var app_access_token = ['AA', app_id, app_secret].join('|');
-        var params = {
-            grant_type: 'authorization_code',
-            code: request.body.code,
-            access_token: app_access_token
-        };
-        // exchange tokens
-        var token_exchange_url = token_exchange_base_url + '?' + Querystring.stringify(params);
-        Request.get({ url: token_exchange_url, json: true }, function(err, resp, respBody) {
-            var view = {
-                user_access_token: respBody.access_token,
-                expires_at: respBody.expires_at,
-                user_id: respBody.id
-            };
-
-            // get account details at /me endpoint
-            var me_endpoint_url = me_endpoint_base_url + '?access_token=' + respBody.access_token;
-            Request.get({ url: me_endpoint_url, json: true }, function(err, resp, respBody) {
-                // send login_success.html
-                if (respBody.phone) {
-                    view.phone_num = respBody.phone.number;
-                } else if (respBody.email) {
-                    view.email_addr = respBody.email.address;
-                }
-                var html = Mustache.to_html(loadLoginSuccess(), view);
-                response.send(html);
-            });
-        });
-    } else {
-        // login failed
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end("Something went wrong. :( ");
-    }
-});
-
-app.listen(3000, function() {
-    console.log("Jobley Is Ready For Your Jobs :).");
+    console.info('>>> 🌎 Open http://0.0.0.0:%s/ in your browser.', port);
 });

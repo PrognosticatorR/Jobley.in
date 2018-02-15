@@ -1,34 +1,31 @@
 <% include partials/header %>
-<script>
+    <!--<script>-->
 
-    function myFunction() {
-        var i=1;
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", "text");
-        x.setAttribute("class", "form-control");
-        x.setAttribute("placeholder", "title");
-        x.setAttribute("name", "subcategory[title]");
-        document.body.appendChild(x);
-        $('#sub_input').append(x);
-        i++;
-    }
+    <!--function myFunction() {-->
+    <!--var i=1;-->
+    <!--var x = document.createElement("INPUT");-->
+    <!--x.setAttribute("type", "text");-->
+    <!--x.setAttribute("class", "form-control");-->
+    <!--x.setAttribute("placeholder", "title");-->
+    <!--x.setAttribute("name", "subcategory[title]");-->
+    <!--document.body.appendChild(x);-->
+    <!--$('#sub_input').append(x);-->
+    <!--i++;-->
+    <!--}-->
 
-</script>
+    <!--</script>-->
 
-<div class="container blog_form">
-    <h1 style="text-align : center">Add a new Job Sub-Category</h1>
-    <div class="job_head" > </div>
-    <form class="form-horizontal" action="/category/<%=category._id%>"  method="POST">
-        <div id="sub_input" class="form-group">
-            <label>Name The Category</label>
-            <input class="form-control" type="text" name ="subcategory[title]" placeholder="title">
-        </div>
-        <div class="form-group">
-            <button class="btn btn-large btn-primary btn-block"> Submit !</button>
-        </div>
-    </form>
-    <div>
-        <button id="more_subcategories" class="btn btn-default btn-md" onclick="myFunction()"> + Add More</button>
+    <div class="container blog_form">
+        <h1 style="text-align : center">Add a new Job Sub-Category</h1>
+        <div class="job_head"> </div>
+        <form class="form-horizontal" action="/category/<%=category.title%>" method="POST">
+            <div id="sub_input" class="form-group">
+                <label>Name The Category</label>
+                <input class="form-control" type="text" name="subcategory[title]" placeholder="title" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-large btn-primary btn-block"> Submit !</button>
+            </div>
+        </form>
     </div>
-</div>
-<% include partials/footer %>
+    <% include partials/footer %>

@@ -1,46 +1,41 @@
 <% include partials/header %>
-<div class="container">
-    <div class="alert alert-info" role="alert">
-        <h3 class="text-center"><strong><%= category.title %></strong></h3>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-condensed table-bordered">
-                        <tr>
-                            <th>Title</th>
-                            <th>Posted By</th>
-                            <th>Eligiblity</th>
-                            <th>Job Location</th>
-                            <th>Last Date</th>
-                            <th>More Details</th>
-                        </tr>
-                        <% category.jobs.forEach(function(job){ %>
-                        <tr>
-                            <td><span><%= job.title %></span></td>
-                            <td>
-                                <%= job.department %>
-                            </td>
-                            <td>
-                                <%= job.eligibility %>
-                            </td>
-                            <td><span><%= job.lastDate %></span></td>
-                            <td>
-                                <%= job.jobLocation %>
-                            </td>
-                            <td class="jobs_table"><a href="<%= category._id %>/job/<%= job._id %>">Know More.</a></td>
-                        </tr>
-                        <% }) %>
-                    </table>
-                    <%if(user){%>
-                    <button class="btn btn-info">
-                        <a href="/category/<%= category._id %>/job/new">Post Jobs</a>
+    <div class="container job_container">
+        <div class="alert alert-info" role="alert">
+            <h3 class="text-center"><strong><%= category.title %></strong></h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <th>Title</th>
+                    <th>Posted By</th>
+                    <th>Eligiblity</th>
+                    <th>Job Location</th>
+                    <th>Last Date</th>
+                    <th>More Details</th>
+                </tr>
+                <% category.jobs.slice().reverse().forEach(function(job){ %>
+                    <tr>
+                        <td><span><%= job.title %></span></td>
+                        <td>
+                            <%= job.department %>
+                        </td>
+                        <td>
+                            <%= job.eligibility %>
+                        </td>
+                        <td>
+                            <%= job.jobLocation %>
+                        </td>
+                        <td><span><%= job.lastDate %></span></td>
+
+                        <td class="jobs_table"><a href="/category/<%=category.title %>/job/<%= job.title %>">Know More.</a></td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <%if(user){%>
+                <button class="btn btn-info">
+                        <a href="/category/<%=category.title %>/job/new">Post Jobs</a>
                     </button>
-                    <%}%>
-                </div>
-            </div>
+                <%}%>
         </div>
     </div>
-</div>
-<% include partials/footer %>
+    <% include partials/footer %>

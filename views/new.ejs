@@ -1,28 +1,31 @@
 <% include partials/header %>
- <div class="container blog_form">
+    <div class="container blog_form">
         <div class="job_head">
-            <h2> <b> Post A New Job</b></h2>
+            <h2><b> Post A New Job</b></h2>
         </div>
         <div class="row">
-            <form class="form-horizontal" action="/category/<%= category._id%>/job" method="POST">
+            <form class="form-horizontal" action="/category/<%=category.title%>/job" method="POST">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" class="form-control" name="job[title]" placeholder="title of job">
+                    <input type="text" class="form-control" name="job[title]" placeholder="title of job" required>
                 </div>
                 <div class="form-group">
                     <label>Category</label>
-                    <select id="dropdown_jobs" name="job[Category]">
-                        <option>Select One Category</option>
-                        <option value="State Jobs">State Jobs</option>
-                        <option value="Central Jobs">Central Jobs</option>
-                        <option value="Banking Jobs">Bank Jobs</option>
-                        <option value="Railways Jobs">Railways Jobs</option>
-                        <option value="Technical Jobs">Technical Jobs</option>
-                        <option value="SSC Jobs">Staff Selection Commission</option>
-                        <option value="UPSC Jobs">Union Public Service Commission</option>
-                        <option value="Upcoming Jobs">Upcoming Jobs</option>
-                        <option value="Current Opening">Current Opening</option>
-                    </select>
+                    <select required id="dropdown_jobs" name="job[Category]" required>
+                    <option value="">Please Select One Category</option>
+                    <option value="Banking Jobs">Banking Jobs</option>
+                    <option value="Central Jobs">Central Jobs</option>
+                    <option value="Latest Jobs">Latest Jobs</option>
+                    <option value="Defence Jobs">Defence Jobs</option>
+                    <option value="Medical Jobs">Medical Jobs</option>
+                    <option value="Internships">Internships</option>
+                    <option value="State Jobs">State Jobs</option>
+                    <option value="Police Jobs">Police Jobs</option>
+                    <option value="Railways Jobs">Railways Jobs</option>
+                    <option value="Staff Selection Commission(SSC)">Staff Selection Commission(SSC)</option>
+                    <option value="Technical Jobs">Technical Jobs</option>
+                    <option value="Union Public Service Commission(UPSC)">Union Public Service Commission(UPSC)</option>
+                </select>
                 </div>
                 <div id="subcategory_names" class="form-group">
                     <label>subcategory</label>
@@ -34,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label>Department</label>
-                    <input type="text" class="form-control" name="job[department]" placeholder="Posting Department">
+                    <input type="text" class="form-control" name="job[department]" placeholder="Posting Department" required>
                 </div>
                 <div class="form-group">
                     <label>Job Location</label>
@@ -53,6 +56,10 @@
                     <input type="text" class="form-control" name="job[applyNow]" placeholder="Url Of Job To Apply Now">
                 </div>
                 <div class="form-group">
+                    <label>URL OF PDF</label>
+                    <input type="text" class="form-control" name="job[pdfUrl]" placeholder="Input The Url Of Pdf To download.">
+                </div>
+                <div class="form-group">
                     <label>Job Details</label>
                     <textarea name="job[jobDetails]" id="" cols="75" rows="10" placeholder="Input All Details Of Job."></textarea>
                 </div>
@@ -62,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label> Job Role</label>
-                    <input type="text" class="form-control" name="job[jobRole]" placeholder="Write About Roles On Job ">
+                    <input type="text" class="form-control" name="job[jobRole]" placeholder="Write About Roles On Job">
                 </div>
                 <div class="form-group">
                     <label>Hiring Process</label>

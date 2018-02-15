@@ -1,64 +1,69 @@
 <% include partials/header %>
-<!--<h3>-->
-<!--<%= user %>-->
-<!--</h3>-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-sm-8">
-            <% categories.forEach(function(category){ %>
-            <% if(category.image){ %>
-            <div class=" col-md-4 col-sm-6 img-box">
-                <div class="img-responsive img-rounded thumbnail">
-                    <a class="home_img" href="/category/<%= category._id %>">
+    <!--<h3>-->
+    <!--<%= user %>-->
+    <!--</h3>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <% categories.forEach(function(category){ %>
+                    <% if(category.image){ %>
+                        <div class=" col-md-4 col-sm-6 img-box">
+                            <div class="img-responsive img-rounded thumbnail">
+                                <a class="home_img" href="/category/<%= category.title %>">
                         <img id="home_img" src="<%= category.image %>">
                         <p class="jobs_tiles">
                             <%= category.title %>
                         </p>
                     </a>
-                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% }); %>
+                                <div class=" col-sm-12">
+                                    <div class="thumbnail blogbox">
+                                        <div>
+                                            <h3 class="item-1">Know About RRB</h3>
+                                            <p class="item-1">
+                                                The RRB conducts various exams to recruit both technical and non-technical staffs every year. For selection of non-technical post the written exam consists of the following 4 subjects Numerical Ability: Basic school level mathematics with focus given
+                                                to calculation skills, Knowledge of basic geometry, algebra and mensuration.
+                                                <br>Most questions are from easy to answer with clear concepts and thorough preparation. General Awareness: This section contains basic school level questions from social sciences, general sciences and current
+                                                affairs.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 class="item-2">How To Crack IBPS</h3>
+                                            <p class="item-2">Take a mock test online: The test will make you aware of the pattern being followed in different sections, level of difficulty and your current status. To know ‘Where do I stand?’ is extremely crucial before
+                                                you actually put in your time and efforts preparing for a competitive exam. Go slow but go in depth Once you’re done with the analysis part you should then work on the fundamentals.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="item-3">SSC(CGL).</h3>
+                                            <p class="item-3">The examination consists of a Preliminary Examination followed by a Main examination. Earlier it also used to have interviews, but following a government order, interviews have been dispensed off for all non-gazetted
+                                                posts in the central government. A computer proficiency test or a skill test will also be held for some post.</p>
+                                        </div>
+                                        <a class="btn btn-info btn-xs" href="/blogs">Know more</a>
+                                    </div>
+                                </div>
             </div>
-            <% } %>
-            <% }); %>
-            <div class=" col-sm-12">
-                <div class="thumbnail blogbox">
-                    <div >
-                        <h3 class="item-1">How To Crack SSC.</h3>
-                        <p class="item-1">This is your last chance. After this, there is no turning back.</p>
-                    </div>
-                    <div >
-                        <h3 class="item-2">How To Crack SSC.</h3>
-                        <p class="item-2">You take the blue pill - the story ends, you wake up in your bed and believe
-                        whatever you want to believe.</p>
-                    </div>
-                    <div >
-                        <h3 class="item-3">How To Crack IBPS.</h3>
-                        <p class="item-3">You take the red pill - you stay in Wonderland and I show you how deep the
-                            rabbit-hole goes.</p>
-                    </div>
-                    <a class="btn btn-info btn-xs" href="/blogs">Know more</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <div class="fb-like" data-href="https://www.facebook.com/jobley.informer/" data-layout="standard"
-                 data-width="310px" data-action="like" data-show-faces="true" data-share="true"></div>
-            <h3 class="text-center current_opening">Current Openings</h3>
-            <div class="list-group">
-                <% categories.forEach(function(category){ %>
-                <% if(category.title === 'Current Opening'){ %>
-                <% category.jobs.forEach(function(job){ %>
-                <a href="/category/<%= category._id %>/job/<%= job._id %>" class="list-group-item text-center ">
-                    <%= job.title %>
-                </a>
-                <% }) %>
-                <% } %>
-                <% }) %>
-                <a href="/category/5a4c8c6cbf4f742160c58a7f" class="list-group-item text-center list-group-item-info">
+            <div class="col-md-4 col-sm-4">
+                <div class="fb-like" data-href="https://www.facebook.com/jobley.informer/" data-layout="standard" data-width="320px" data-action="like" data-show-faces="true" data-share="true"></div>
+                <h3 class="text-center current_opening">Current Openings</h3>
+                <div class="list-group">
+                    <% categories.forEach(function(category){ %>
+                        <% if(category.title === 'Latest Jobs'){ %>
+                            <% var jobarr = category.jobs %>
+                                <% jobarr.slice(jobarr.length-8 , jobarr.length ).reverse().forEach(function(job){ %>
+                                    <a href="/category/Latest Jobs/job/<%= job.title %>" class="list-group-item text-center ">
+                                        <strong><%= job.title %></strong>
+                                    </a>
+                                    <% }) %>
+                                        <% } %>
+                                            <% }) %>
+                                                <a href="/category/Latest Jobs" class="list-group-item text-center list-group-item-info">
                     All Openings
                 </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<% include partials/footer %>
+    <% include partials/footer %>
