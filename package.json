@@ -29,7 +29,7 @@
     "helmet": "^3.10.0",
     "mailchimp": "^1.2.0",
     "method-override": "^2.3.10",
-    "mongoose": "^4.11.12",
+    "mongoose": "^5.8.7",
     "multer": "^1.3.0",
     "mustache": "^2.2.1",
     "passport": "^0.4.0",
